@@ -61,13 +61,13 @@ const curriedSum = curry(sum)
 const add2 = curriedSum(2)
 const add3 = add2(3)
 const add5 = add3(5)
-console.log(add5)
+//console.log(add5)
 
 
 function citytrip(sight, restaurant, pub) {
   return `See ${sight} in Paris, eat at ${restaurant} in Rome and have a drink at ${pub} in Amsterdam.`
 }
-console.log(citytrip('Eiffel tower', 'Trevi', 'OReillys'))
+//console.log(citytrip('Eiffel tower', 'Trevi', 'OReillys'))
 
 function sightseeing(fn) {
   return function (sight) {
@@ -79,12 +79,21 @@ function sightseeing(fn) {
   }
 }
 const planning = sightseeing(citytrip)
-console.log(planning('Eiffel tower')('Trevi')('OReillys'))
+//console.log(planning('Eiffel tower')('Trevi')('O\'Reillys'))
 
 const plan1 = planning('Eiffel tower')
 const plan2 = plan1('Trevi')
-const plan3 = plan2('Oreillys')
+const plan3 = plan2('O\'reillys')
 
-console.log(plan3)
+//console.log(plan3)
+
+
+
+
+
+
+
+
+
 
 
