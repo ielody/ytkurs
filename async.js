@@ -129,3 +129,12 @@ order(2000, () => console.log(`${stocks.Fruits[0]} was selected`))
     console.log(`${stocks.toppings[1]} was added`)
   })
 })
+
+//catch reject
+.catch(()=> {
+  console.log('Customer left')
+})
+
+.finally(() => {
+  console.log('Day ended, shop is closed')
+})
