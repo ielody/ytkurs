@@ -84,57 +84,87 @@ const timeoutVase = setTimeout(waterFlower, 2500)
 
 //Promise - create, fulfill/reject
 
-let stocks = {
-  Fruits: ['strawberry', 'grapes', 'watermelon'],
-  liquid: ['water', 'ice'],
-  holder: ['cone', 'cup', 'stick'],
-  toppings: ['chocolate', 'almonds']
-}
+// let stocks = {
+//   Fruits: ['strawberry', 'grapes', 'watermelon'],
+//   liquid: ['water', 'ice'],
+//   holder: ['cone', 'cup', 'stick'],
+//   toppings: ['chocolate', 'almonds']
+// }
 
-let is_shop_open = true
+// let is_shop_open = true
 
-let order = (time, work) => {
+// let order = (time, work) => {
 
-  return new Promise((resolve, reject) => {
+//   return new Promise((resolve, reject) => {
 
-    if(is_shop_open) {
-      setTimeout(()=> {
-        resolve(work())
-      }, time)
-    } else {
-      reject(console.log('our shop is closed'))
-    }
+//     if(is_shop_open) {
+//       setTimeout(()=> {
+//         resolve(work())
+//       }, time)
+//     } else {
+//       reject(console.log('our shop is closed'))
+//     }
+//   })
+// }
+
+// order(2000, () => console.log(`${stocks.Fruits[0]} was selected`))
+
+// .then(() => {
+//   return order(1000, () =>
+//     console.log('Production has started'))
+// })
+
+// .then(() => {
+//   return order (2000, () =>
+//     console.log('fruit is done'))
+// })
+
+// .then(() => {
+//   return order(1000, () =>
+//     console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} were added`))
+//   })
+
+// .then(() => {
+//   return order(1000, () => {
+//     console.log(`${stocks.toppings[1]} was added`)
+//   })
+// })
+
+// //catch reject
+// .catch(()=> {
+//   console.log('Customer left')
+// })
+
+// .finally(() => {
+//   console.log('Day ended, shop is closed')
+// })
+
+
+//sequential, concurrent, parallel execution
+function bestilling() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('Kunden har bestilt blomster')
+    }, 1000)
   })
 }
 
-order(2000, () => console.log(`${stocks.Fruits[0]} was selected`))
-
-.then(() => {
-  return order(1000, () =>
-    console.log('Production has started'))
-})
-
-.then(() => {
-  return order (2000, () =>
-    console.log('fruit is done'))
-})
-
-.then(() => {
-  return order(1000, () =>
-    console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} were added`))
+function blomsterSendt() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('Blomstene er sendt')
+    }, 4000)
   })
+}
 
-.then(() => {
-  return order(1000, () => {
-    console.log(`${stocks.toppings[1]} was added`)
-  })
-})
+async function bestillSendt () {
+  const bestill = bestilling()
+  const sendt = blomsterSendt()
 
-//catch reject
-.catch(()=> {
-  console.log('Customer left')
-})
+  console.log(await bestill)
+  console.log(await sendt)
+}
+bestillSendt ()
 
-.finally(() => {
-  console.log('Day ended, shop is closed')
-})
+
+
